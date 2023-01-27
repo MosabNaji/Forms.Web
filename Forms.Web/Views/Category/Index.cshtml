@@ -1,0 +1,38 @@
+﻿@model List<Category> //depend on returned values from controller
+
+    <h1>Category</h1>
+    <h1>@TempData["msg"]</h1>
+    <hr />
+    <a asp-comtroller="Category" asp-action="Create" class="btn btn-primary" > Add New</a>
+    <hr />
+   
+        @if(Model.Any()){
+    <table class="table table-hover">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Created At</th>
+            <th>Actions</th>
+        </tr>
+
+        @foreach(var category in Model)
+        {
+            <tr>
+                <th>@category.Id</th>
+                <th>@category.Name</th>
+                <th>@category.CreatedAt.ToString("yyyy/MM/dd")</th>
+                <th>
+                    <a class="btn btn-warning" href="~/Category/Update/@category.Id" >Update</a>
+                    <a class="btn btn-danger" href="~/Category/Delete/@category.Id" >Delete</a>
+
+                </th>
+            </tr>
+        }
+    </table>
+    }
+    else
+    {
+        <div class="alert alert-warning">
+            No Data in our Databae!
+        </div>
+    }

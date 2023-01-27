@@ -1,0 +1,79 @@
+﻿@model CreateProductViewModel
+
+@section CSS {
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+}
+<h1> Add New Products </h1>
+
+<form asp-action="Create" enctype="multipart/form-data" >
+
+      <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Name" ></label>
+                <input requird asp-for="Name" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+      
+
+    <div class="row">
+        <div class="col-md-12" > 
+            <div class="row">
+        
+            <div class="form-group">
+                <label asp-for="Description" ></label>
+                <textarea id="ProductDiscreption"  asp-for="Description" class="form-control"><</textarea>/>
+            </div>
+        
+    </div>
+        </div>
+    </div>
+
+ <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Price" class="label-controll" ></label>
+                <input requird asp-for="Price" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+      <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="CategoryId" >CategoryId</label>
+                <Select  asp-for="CategoryId" asp-items="ViewBag.categoryList"  class="form-control" >
+                    
+                </Select>
+
+            </div>
+        </div>
+    </div>
+
+      <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                
+                <label asp-for="ImageURL" ></label>
+                <input ttype="file" asp-for="ImageURL"  class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <input type="submit" class="btn btn-primary" value="Save" />
+    <a asp-controller="Product" asp-action="Index" class="btn btn-danger"> Back</a>
+</form>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script>
+        $(document).ready(function() {
+   $('#ProductDiscreption').summernote({
+        placeholder: 'Write Produtc Info',
+        height: 400
+      });
+      });
+    </script>
+}

@@ -1,0 +1,48 @@
+﻿@model List<Product>
+
+    <h1>Products</h1>
+    <hr />
+    
+@*@if(TempData["msg"] != null)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Messege!</strong> @TempData["msg"]
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+}*@
+
+    
+
+  <a asp-controller="Product" asp-action="Create" class="btn btn-primary" > Add New Product! </a>
+
+   
+@if (Model.Any())
+{
+    <table class="table table-hover">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Image</th>
+            <th>Category</th>
+            <th>Created</th>
+        </tr>
+        @foreach(var product in Model)
+        {
+            <tr>
+                <th>@product.Id</th>
+                <th>@product.Name</th>
+                <th>@product.Price</th>
+                <th>
+                    <img class="img-fluid" width="200" src="~/Images/@product.ImageURL" />
+                </th>
+                <th>@product.Category.Name</th>
+                <th>@product.CreatedAt.ToString("yyy/MM/dd")</th>
+            </tr>
+        }
+    </table>
+}else{
+    <div class="alert alert-warning">
+        No Data in our Database!
+    </div>
+}

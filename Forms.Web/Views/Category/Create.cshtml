@@ -1,0 +1,18 @@
+﻿@model CreateCategoryViewModel // لازم أعرفه في الامبورت عشان يتعرف عليه
+
+<h1>Add New Category!</h1>
+<hr />
+<form asp-action="Create">
+    <div class="row">
+        <div class="col-md-6">
+        <div class="form-group">
+                <label > Category Name </label>
+            <input required asp-for="Name"  class="form-control"/>
+            </div>
+        </div>
+    </div>
+
+    <input type="submit" class="btn btn-primary" value="Save" />
+    <a asp-controller="Category" asp-action="Index" class="btn btn-danger" >Back </a>
+    
+</form>
